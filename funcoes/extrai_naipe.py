@@ -3,4 +3,5 @@ def extrai_naipe(x):
         return x[2]
     elif len(x) == 2:
         return x[1]
+#
         

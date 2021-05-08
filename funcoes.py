@@ -56,3 +56,9 @@ def possui_movimentos_possiveis(baralho):
         if lista_movimentos_possiveis(baralho, posicao) != []:
             return True
     return False
+
+
+def numerador(baralho):
+    for i in range(len(baralho)):
+        print (str(i + 1) + ". " + baralho(i))
+

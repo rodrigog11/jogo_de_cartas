@@ -50,3 +50,9 @@ def cria_baralho():
     random.shuffle(baralho)
 
     return baralho
+
+def possui_movimentos_possiveis(baralho):
+    for posicao in range(len(baralho)):
+        if lista_movimentos_possiveis(baralho, posicao) != []:
+            return True
+    return False

@@ -8,8 +8,7 @@ print("Há dois movimentos possíveis: \n 1. Empilhar uma carta sobre a carta im
 
 #definir a opção de iniciar ((pressione 'enter', digite 'ok' e afins)): COMPLEXO
 #Numerar as cartas de 1 a 52 e printá-las (associar cada item da lista)
-baralho = cria_baralho()
-print (numerador(baralho))
+
 
 #usar while/for enquanto houver jogadas possíveis
 #input para o jogador escolher a carta que deseja mover
@@ -17,30 +16,80 @@ print (numerador(baralho))
 #exibir mensagem caso não seja possível mover a carta escolhida e voltar pro input
 #usar a função da lista de movimentos
 #usar a função empilha carta
+quer_jogar = input('Deseja jogar? digite sim ou nao')
 
-while possui_movimentos_possiveis(baralho) == True:
-    qual_carta = input('Qual carta gostaria de empilhar?')
-    i = 0
-    while i < len(baralho):
-        if qual_carta == baralho[i]:
-            movimentos = lista_movimentos_possiveis(baralho, i)
-            if movimentos == [1]:
-                empilhar = empilha(baralho, i, i-1)
-            elif movimentos == [3]:
-                empilhar = empilha(baralho, i, i-3)
-            elif movimentos == [1, 3]:
-                qual_empilha = input("Deseja empilhar a carta sobre a carta 1 ou a carta 3 anterior? ")
-                if qual_empilha == "1":
-                    empilhar = empilha(baralho, i, i-1)
-                elif qual_empilha == "3":
-                    empilhar = empilha(baralho, i, i-3)
-            
+if quer_jogar == 'sim':
+    jogar = True 
+else: 
+    jogar = False
+while jogar:
+
+    baralho = cria_baralho()
+    
+    while possui_movimentos_possiveis(baralho):
+
+        print (numerador(baralho))
+        i = 0
+        for i in range(len(baralho)):
+            qual_carta = int(input('Qual carta gostaria de empilhar? escolha um numero'))
+            if qual_carta == i+1:
+                movimentos = lista_movimentos_possiveis(baralho, i+1)
+                if movimentos == [1]:
+                    empilhar = empilha(baralho, i+1, i)
+                    baralho = empilhar
+                elif movimentos == [3]:
+                    empilhar = empilha(baralho, i+1, i-2)
+                    baralho = empilhar
+                elif movimentos == [1,3]:
+                    qual_empilha = input("Deseja empilhar a carta sobre a carta 1 ou a carta 3 anterior? ")
+                    if qual_empilha == "1":
+                        empilhar = empilha(baralho, i+1, i)
+                        baralho = empilhar
+                    elif qual_empilha == "3":
+                        empilhar = empilha(baralho, i+1, i-2)
+                        baralho = empilhar
+                else:
+                    print('escolha outra carta')
             else:
-                print('não há movimentos possíveis, escolha outra carta')
-                break
-            baralho = empilhar
-        else: 
-            i+=1
+                i+=1
+
+
             
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+            '''if qual_carta == i+1:
+                movimentos = lista_movimentos_possiveis(baralho, i+1)
+                if movimentos == [1]:
+                    empilhar = empilha(baralho, i+1, i)
+                    baralho = empilhar
+                elif movimentos == [3]:
+                    empilhar = empilha(baralho, i+1, i-2)
+                    baralho = empilhar
+                elif movimentos == [1, 3]:
+                    qual_empilha = input("Deseja empilhar a carta sobre a carta 1 ou a carta 3 anterior? ")
+                    if qual_empilha == "1":
+                        empilhar = empilha(baralho, i+1, i)
+                        baralho = empilhar
+                    elif qual_empilha == "3":
+                        empilhar = empilha(baralho, i+1, i-2)
+                        baralho = empilhar
+                else:
+                    print('não há movimentos possíveis, escolha outra carta')
+                
+            else: 
+                i+=1'''

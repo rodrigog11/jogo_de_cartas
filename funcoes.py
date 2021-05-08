@@ -60,5 +60,7 @@ def possui_movimentos_possiveis(baralho):
 
 def numerador(baralho):
     for i in range(len(baralho)):
-        print (str(i + 1) + ". " + baralho(i))
+        print(str(i + 1) + ". " + baralho[i])
+
+
 

@@ -1,30 +1,17 @@
 #Importando funções e arquivos a serem utilizados:
-import time
 from funcoes import *
 
 #Texto inicial - boas-vindas e instruções:
-#(uso da função 'time.sleep' para sugerir maior interatividade)
-time.sleep(0)
+#(SUGESTÃO: uso da função 'time.sleep' para sugerir maior interatividade - COLOCAR A POSSIBILIDADE DE DAR SKIP DAS INSTRUÇÕES)
 print("\033[1m" + "|Paciência Acordeão|\n" + "====================" +"\033[0m" + "\n" )
-time.sleep(0)
-
-#COLOCAR A POSSIBILIDADE DE DAR SKIP DAS INSTRUÇÕES
 print("Seja bem-vindo(a) ao jogo de Paciência Acordeão! O objetivo deste jogo é colocar todas as cartas em uma mesma pilha.\n")
-time.sleep(0)
 print("Existem apenas dois movimentos possíveis:\n" )
-time.sleep(0)
 print ("1. Empilhar uma carta sobre a carta imediatamente anterior")
-time.sleep(0)
 print("2. Empilhar uma carta sobre a terceira carta anterior.\n")
-time.sleep(0)
 print("Para que um movimento possa ser realizado basta que uma das duas condições abaixo seja atendida:\n")
-time.sleep(0)
 print("1. As duas cartas possuem o mesmo valor ou")
-time.sleep(0)
 print("2. As duas cartas possuem o mesmo naipe.\n")
-time.sleep(0)
 print("Desde que alguma das condições acima seja satisfeita, qualquer carta pode ser movimentada.\n")
-time.sleep(0)
 #Input inicial (começa o jogo):
 input("Aperte [ENTER] para para iniciar o jogo...")
 
@@ -41,8 +28,6 @@ while possui_movimentos_possiveis(baralho):
 
     #No caso de i não corresponder a uma carta existente, perguntando novamente qual carta o/a jogador(a) deseja mover:
     #PRECISA CONECTAR ESSE WHILE/FOR COM O ELSE (SE NÃO FOR POSSÍVEL MOVER A CARTA)
-    while:
-        i= int(input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(len(baralho)))) 
         
     #Armazenando a lista de movimentos possíveis para a carta escolhida (i) na lista 'mov':
     mov = lista_movimentos_possiveis(baralho, i-1)
@@ -67,21 +52,21 @@ while possui_movimentos_possiveis(baralho):
             empilhar=empilha(baralho,i-1,i-4)
             baralho = empilhar
 
-            #ESTE ELSE PRECISA SER CONECTADO COM O WHILE (DO INPUT DO I Ñ SER VÁLIDO) E COM A LISTA 'MOV'
+    #ESTE ELSE PRECISA SER CONECTADO COM O WHILE (DO INPUT DO I Ñ SER VÁLIDO) E COM A LISTA 'MOV'
     else:
         #Imprimindo mensagem referente à impossibilidade de mover a carta escolhida:
         i = int(input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}: ".format(baralho[i-1], len(baralho))))
 
 #Printando o estado final do baralho, quando houver nenhum movimento possível
-print((baralho) + "Não há mais movimentos possíveis.")
+print("{0} \n Não há mais movimentos possíveis.".format(baralho))
 
 #Resultado do jogo:
 if len(baralho) > 10:
     print("Você perdeu. {0} cartas foram eliminadas.".format(len(baralho)))
 else:
     if len(baralho) > 5:
-        print("Você chegou perto! {0} cartas foram eliminadas.".format(len(baralho)))
+        print("Você chegou perto! {0} cartas foram eliminadas.".format(len(cria_baralho()) - len(baralho)))
     elif len(baralho) > 1:
-        print("Você quase ganhou! {0} cartas foram eliminadas. Muito bem!".format(len(baralho)))
+        print("Você quase ganhou! {0} cartas foram eliminadas. Muito bem!".format(len(cria_baralho()) - len(baralho)))
     elif len(baralho) == 1:
         print("Você ganhou - "+ "\033[1m" + "parabéns!" + "\033[0m")

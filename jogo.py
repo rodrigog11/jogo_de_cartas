@@ -62,7 +62,8 @@ print("{0} \n Não há mais movimentos possíveis.".format(baralho))
 
 #Resultado do jogo:
 if len(baralho) > 10:
-    print("Você perdeu. {0} cartas foram eliminadas.".format(len(baralho)))
+    print("Você perdeu. {0} cartas foram eliminadas.".format( len(cria_baralho()) - len(baralho)))
+#NÃO ACHO QUE TENHA PROBLEMA EM FAZER ISSO AQUI, MAS NÃO TENHO CERTEZA:
 else:
     if len(baralho) > 5:
         print("Você chegou perto! {0} cartas foram eliminadas.".format(len(cria_baralho()) - len(baralho)))

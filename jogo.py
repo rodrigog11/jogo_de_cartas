@@ -3,7 +3,7 @@ from funcoes import *
 
 #Texto inicial - boas-vindas e instruções:
 #(SUGESTÃO: uso da função 'time.sleep' para sugerir maior interatividade - COLOCAR A POSSIBILIDADE DE DAR SKIP DAS INSTRUÇÕES)
-print("\033[1m" + "|Paciência Acordeão|\n" + "====================" +"\033[0m" + "\n" )
+print(cores.bold + "|Paciência Acordeão|\n" + "====================" + cores.reset + "\n" )
 print("Seja bem-vindo(a) ao jogo de Paciência Acordeão! O objetivo deste jogo é colocar todas as cartas em uma mesma pilha.\n")
 print("Existem apenas dois movimentos possíveis:\n" )
 print ("1. Empilhar uma carta sobre a carta imediatamente anterior")
@@ -21,7 +21,7 @@ baralho = cria_baralho()
 #Uso de estrutura de loop (while, for) junto à função 'possui_movimentos_possiveis' para averiguar se ainda há movimentos possíveis após o último movimento:
 while possui_movimentos_possiveis(baralho):
     #Imprimindo o baralho
-    numerador(baralho)
+    numero_e_cor(baralho)
     
     #Armazenando a carta a ser movida na variável i (numerador da carta; não representa o índice):
     i = int(input('Escolha uma carta (digite um número entre 1 e {0}): '.format(len(baralho))))

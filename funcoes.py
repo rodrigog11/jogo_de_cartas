@@ -61,9 +61,29 @@ def possui_movimentos_possiveis(baralho):
             return True
     return False
 
+class cores:
+    
+    reset='\033[0m'
+    bold = '\033[01m'
+    black='\033[30m'
+    brightmagenta = '\033[1;35;40m'
+    brightred = '\033[1;31;40m'
+    brightgreen = '\033[1;32;40m'
+    brightblue = '\033[1;34;40m'
 
-def numerador(baralho):
+def colorir(carta):
+    if extrai_naipe(carta) == '♣':
+        carta = cores.brightgreen + carta + cores.reset
+    elif extrai_naipe(carta) == '♥':
+        carta = cores.brightred + carta + cores.reset
+    elif extrai_naipe(carta) == '♠':
+        carta = cores.brightblue + carta + cores.reset
+    elif extrai_naipe(carta) == '♦':
+        carta = cores.brightmagenta + carta + cores.reset
+        
+    return carta
+
+def numero_e_cor(baralho):
+    print('O estado atual do baralho é:\n')
     for i in range(len(baralho)):
-        print(str(i + 1) + ". " + baralho[i])
-
-
+        print(str(i + 1) + ". " + colorir(baralho[i]))

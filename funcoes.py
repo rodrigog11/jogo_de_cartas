@@ -1,32 +1,3 @@
-def extrai_naipe(x):
-    if len(x) == 3:
-        return x[2]
-    elif len(x) == 2:
-        return x[1]
-
-def extrai_valor(x):
-    if len(x) == 3:
-        return x[0]+x[1] 
-    if len(x) == 2:
-        return x[0]
-
-def lista_movimentos_possiveis(baralho, i):
-    vazia=[]
-    if i==0:
-        return vazia
-    if extrai_naipe(baralho[i]) == extrai_naipe(baralho[i-1]) or extrai_valor(baralho[i]) == extrai_valor(baralho[i-1]):
-        vazia.append(1)
-    if i >= 3:
-        if extrai_naipe(baralho[i]) == extrai_naipe(baralho[i-3]) or extrai_valor(baralho[i]) == extrai_valor(baralho[i-3]):
-            vazia.append(3)
-    return vazia 
-
-def empilha(baralho, o, d):
-    if o > d and (o - d == 1 or o - d == 3):
-        baralho[d] = baralho[o]
-        del baralho[o]
-    return baralho
-
 import random
 def cria_baralho():
     naipes = ['♣', '♥', '♠', '♦']
@@ -51,6 +22,39 @@ def cria_baralho():
 
     return baralho
 
+
+def extrai_naipe(carta):
+    #igualando a variável 'naipe' ao último caractere da string 'carta'
+    naipe = carta[len(carta)-1]
+    return naipe
+
+
+def extrai_valor(carta):
+    if len(carta) == 2:
+        return carta[0]
+    if len(carta) == 3:
+        return carta[0] + carta[1] 
+
+
+def lista_movimentos_possiveis(baralho, i):
+    movimentos = []
+    if i == 0:
+        return movimentos
+    if extrai_naipe(baralho[i]) == extrai_naipe(baralho[i-1]) or extrai_valor(baralho[i]) == extrai_valor(baralho[i-1]):
+        movimentos.append(1)
+    if i >= 3:
+        if extrai_naipe(baralho[i]) == extrai_naipe(baralho[i-3]) or extrai_valor(baralho[i]) == extrai_valor(baralho[i-3]):
+            movimentos.append(3)
+    return movimentos 
+
+
+def empilha(baralho, o, d):
+    if o > d and (o - d == 1 or o - d == 3):
+        baralho[d] = baralho[o]
+        del baralho[o]
+    return baralho
+
+
 def possui_movimentos_possiveis(baralho):
     for posicao in range(len(baralho)):
         if lista_movimentos_possiveis(baralho, posicao) != []:
@@ -61,6 +65,5 @@ def possui_movimentos_possiveis(baralho):
 def numerador(baralho):
     for i in range(len(baralho)):
         print(str(i + 1) + ". " + baralho[i])
-
 
 

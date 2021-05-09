@@ -71,3 +71,6 @@ else:
         print("Você quase ganhou! {0} cartas foram eliminadas. Muito bem!".format(len(cria_baralho()) - len(baralho)))
     elif len(baralho) == 1:
         print("Você ganhou - "+ "\033[1m" + "parabéns!" + "\033[0m")
+
+#PRECISA DE UM LOOP AQUI:
+continuar = input("Quer jogar novamente? ")

@@ -65,7 +65,6 @@ class cores:
     
     reset='\033[0m'
     bold = '\033[01m'
-    black='\033[30m'
     brightmagenta = '\033[1;35;40m'
     brightred = '\033[1;31;40m'
     brightgreen = '\033[1;32;40m'
@@ -84,6 +83,6 @@ def colorir(carta):
     return carta
 
 def numero_e_cor(baralho):
-    print('O estado atual do baralho é:\n')
+    print('\nO estado atual do baralho é:\n')
     for i in range(len(baralho)):
         print(str(i + 1) + ". " + colorir(baralho[i]))

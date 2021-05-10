@@ -53,16 +53,19 @@ while continuar:
 
         #Se a lista mov tiver dois itens (ou mais):
         elif len(mov) > 1:
-            #Exibindo as cartas sobre as quais é possível empilhar a carta escolhida e perguntando para onde o/a jogador(a) deseja movê-la:
-            onde_empilha = int(input('Sobre qual carta você quer empilhar {0}?\n1.{1}\n2.{2}\n\nDigite o número de sua escolha(1-{3}):  '.format(baralho[i-1], baralho[i-2], baralho[i-4], len(baralho))))
-            if onde_empilha == 1:
-                empilhar = empilha(baralho,i-1 ,i-2)
-                baralho = empilhar
-            elif onde_empilha == 2:
-                empilhar=empilha(baralho,i-1,i-4)
-                baralho = empilhar
-            
-            #PRECISA DE ELSE (CASO O Nº Ñ SEJA 1 OU 2): UM LOOP ATÉ O USUÁRIO DIGITAR UM VALOR VÁLIDO PARA onde_empilha
+            pergunta_2 = True
+            while pergunta_2:
+                #Exibindo as cartas sobre as quais é possível empilhar a carta escolhida e perguntando para onde o/a jogador(a) deseja movê-la:
+                onde_empilha = int(input('Sobre qual carta você quer empilhar {0}?\n1.{1}\n2.{2}\n\nDigite o número de sua escolha(1-{3}):  '.format(baralho[i-1], baralho[i-2], baralho[i-4], len(baralho))))
+                if onde_empilha == 1:
+                    empilhar = empilha(baralho,i-1 ,i-2)
+                    baralho = empilhar
+                    pergunta_2 = False
+
+                elif onde_empilha == 2:
+                    empilhar=empilha(baralho,i-1,i-4)
+                    baralho = empilhar
+                    pergunta_2 = False
 
         #ESTE ELSE PRECISA SER CONECTADO COM O WHILE (DO INPUT DO I Ñ SER VÁLIDO) E COM A LISTA 'MOV'
         else:
@@ -85,7 +88,7 @@ while continuar:
 
     #PRECISA DE UM LOOP AQUI:
     jogar = input("Quer jogar novamente? digite sim ou nao ")
-    if jogar == 'sim'
+    if jogar == 'sim':
         continuar = True
     else:
         continuar = False
